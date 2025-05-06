@@ -5,6 +5,7 @@ title_font = ("Roboto", 18, 'bold')
 label_font = ("Roboto", 15, 'normal')
 label_bold_font = ("Roboto", 15, 'bold')
 button_font = ("Roboto", 14, 'normal')
+checkbox_font = ("Roboto", 11, 'normal')
 
 def create_main_window():
     # initiate the window
@@ -113,14 +114,19 @@ def create_main_window():
 
     #right content
 
+    right_content_row = Frame(right_content_main_frame)
+    right_content_row.pack(side='left', anchor='n')
+
     #system clean box
-    system_clean_frame = Frame(right_content_main_frame, bg='blue')
-    system_clean_frame.pack(side='left', anchor='n', pady=(30, 0), padx=(60, 0))
+    system_clean_frame = Frame(right_content_row, bg='blue')
+    system_clean_frame.grid(row=0, column=0, sticky='n',pady=(30, 0), padx=(60, 0))
 
     #icon
     icon_system_clean = PILImage.open("../assets/icons/system_clean_icon.png")
     icon_system_clean = icon_system_clean.resize((25,25))
     icon_system_clean = PILImageTk.PhotoImage(icon_system_clean)
+
+
     #title
     system_clean_title = Label(system_clean_frame,
                                text='System Clean',
@@ -130,6 +136,100 @@ def create_main_window():
 
     system_clean_title.config(font=label_bold_font)
     system_clean_title.pack()
+
+    # buttons variables
+    temp_file_clean_button = IntVar()
+    download_folder_clean_button = IntVar()
+    recycle_bin_clean_button = IntVar()
+    windows_update_button = IntVar()
+    disk_clean_button = IntVar()
+
+
+    #system clean content frame
+    #system_clean_content_frame = Frame(system_clean_frame)
+    #system_clean_content_frame.pack()
+
+    #system clean content
+    temp_file_clean_checkbox = Checkbutton(system_clean_frame,
+                                           text="Clean temp file",
+                                           variable=temp_file_clean_button,
+                                           font=checkbox_font)
+
+    temp_file_clean_checkbox.pack(anchor='w', padx=(15, 0), pady=(3, 0))
+
+    #clean download file
+    download_folder_clean_checkbox = Checkbutton(system_clean_frame,
+                                           text="Clean download folder",
+                                           variable=download_folder_clean_button,
+                                           font=checkbox_font)
+
+    download_folder_clean_checkbox.pack(anchor='w', padx=(15, 0), pady=(3, 0))
+
+    # clean recycle bin
+    recycle_bin_clean_checkbox = Checkbutton(system_clean_frame,
+                                                 text="Clean recycle bin",
+                                                 variable=recycle_bin_clean_button,
+                                                 font=checkbox_font)
+
+    recycle_bin_clean_checkbox.pack(anchor='w', padx=(15, 0), pady=(3, 0))
+
+    # verif & install Windows update
+    windows_update_checkbox = Checkbutton(system_clean_frame,
+                                             text="Windows update",
+                                             variable=windows_update_button,
+                                             font=checkbox_font)
+
+    windows_update_checkbox.pack(anchor='w', padx=(15, 0), pady=(3, 0))
+
+    # disk clean
+    disk_clean_checkbox = Checkbutton(system_clean_frame,
+                                          text="Disk cleanUp",
+                                          variable=disk_clean_button,
+                                          font=checkbox_font)
+
+    disk_clean_checkbox.pack(anchor='w', padx=(15, 0), pady=(3, 0))
+
+    #------------------------------------------
+
+    # maintenance box content
+    maintenance_frame = Frame(right_content_row, bg='blue')
+    maintenance_frame.grid(row=0, column=1, sticky='n',pady=(30, 0), padx=(120, 0))
+
+    # icon
+    icon_maintenance = PILImage.open("../assets/icons/maintenance_icon.png")
+    icon_maintenance = icon_maintenance.resize((25, 25))
+    icon_maintenance = PILImageTk.PhotoImage(icon_maintenance)
+
+    # title
+    maintenance_title = Label(maintenance_frame,
+                               text='Maintenance',
+                               image=icon_maintenance,
+                               compound="left",
+                               padx=10)
+
+    maintenance_title.config(font=label_bold_font)
+    maintenance_title.pack()
+
+    # buttons variables
+    desktop_clean_button = IntVar()
+    mouse_speed_button = IntVar()
+
+
+    # desktop clean
+    desktop_clean_checkbox = Checkbutton(maintenance_frame,
+                                           text="Desktop clean",
+                                           variable=desktop_clean_button,
+                                           font=checkbox_font)
+
+    desktop_clean_checkbox.pack(anchor='w', padx=(15, 0), pady=(3, 0))
+
+    # mouse speed
+    mouse_speed_checkbox = Checkbutton(maintenance_frame,
+                                                 text="Mouse speed",
+                                                 variable=mouse_speed_button,
+                                                 font=checkbox_font)
+
+    mouse_speed_checkbox.pack(anchor='w', padx=(15, 0), pady=(3, 0))
 
 
 # -------------------------------------------
