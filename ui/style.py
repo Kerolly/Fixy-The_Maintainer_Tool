@@ -1,0 +1,5 @@
+TITLE_FONT = ("Roboto", 18, 'bold')
+LABEL_FONT = ("Roboto", 15, 'normal')
+LABEL_BOLD_FONT = ("Roboto", 15, 'bold')
+BUTTON_FONT = ("Roboto", 14, 'normal')
+CHECKBOX_FONT = ("Roboto", 11, 'normal')
