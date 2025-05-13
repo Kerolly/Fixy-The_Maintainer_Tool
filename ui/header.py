@@ -1,5 +1,6 @@
 from tkinter import *
 from ui.style import *
+from core.launch_tasks import launch_selected_tasks
 
 
 #header builder
@@ -24,5 +25,10 @@ def build_header(root):
     header_update_button = Button(buttons_frame, text="Update", font=BUTTON_FONT)  # update button
     header_update_button.pack(side='left', padx='20')
 
-    header_launch_button = Button(buttons_frame, text="Launch", font=BUTTON_FONT)  # launch button
+    header_launch_button = Button(buttons_frame, text="Launch",
+                                  font=BUTTON_FONT,
+                                  command=launch_selected_tasks)  # launch button
     header_launch_button.pack(side='right')
+
+
+#

@@ -1,3 +1,4 @@
+from core.admin_check import run_as_admin
 from tkinter import *
 from PIL import Image as PILImage, ImageTk as PILImageTk
 from core.version import VERSION
@@ -6,6 +7,7 @@ from ui.header import build_header
 from ui.left_side import build_left_side
 from ui.right_side import build_right_side
 from ui.footer import build_footer
+
 
 
 def create_main_window():
@@ -36,3 +38,4 @@ def create_main_window():
 
 if __name__ == "__main__":
     create_main_window()
+

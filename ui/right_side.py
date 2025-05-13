@@ -1,6 +1,7 @@
 from tkinter import *
 from ui.style import *
 from PIL import Image as PILImage, ImageTk as PILImageTk
+import core.state
 
 
 def build_right_side(root):
@@ -242,5 +243,30 @@ def build_right_side(root):
 
     pycharm_app_checkbox.pack(anchor='w', padx=(15, 0), pady=(3, 0))
 
+    #dictionary for launch options
+    core.state.launch_options = {
+        "temp_file_clean": temp_file_clean_button,
+        "download_folder_clean": download_folder_clean_button,
+        "recycle_bin_clean": recycle_bin_clean_button,
+        "windows_update": windows_update_button,
+        "disk_clean": disk_clean_button,
+        #-----
+        "desktop_clean": desktop_clean_button,
+        "mouse_speed": mouse_speed_button,
+        "host_block": host_block_button,
+        # -----
+        "auto_opening_site": auto_opening_site_button,
+        "dark_mode_chrome": dark_mode_chrome_button,
+        "clean_history": clean_history_button,
+        "auto_cookie_delete": auto_cookie_delete_button,
+        "set_background": set_background_button,
+        # -----
+        "python_app": python_app_button,
+        "pycharm_app": pycharm_app_button
+    }
+
     # ------------------------------------------
 
+def get_launch_options():
+    print(core.state.launch_options)
+    return core.state.launch_options
