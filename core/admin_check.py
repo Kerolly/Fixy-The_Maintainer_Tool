@@ -1,24 +1,32 @@
 import os
 import sys
-from ctypes import windll
+import ctypes
+
 
 def is_admin():
     try:
-        return windll.shell32.IsUserAnAdmin()
-    except Exception as e:
-        print(f"Eroare: {e}")
+        return ctypes.windll.shell32.IsUserAnAdmin()
+    except:
         return False
+
 
 def run_as_admin():
     if not is_admin():
-        print("Nu ai drepturi de admin. Relansăm scriptul...")
+        print("[DEBUG] Relansăm cu admin...", flush=True)  # flush=True forțează afișarea
+
+        # Obține calea absolută a scriptului curent
         script = os.path.abspath(sys.argv[0])
-        params = " ".join([f'"{arg}"' for arg in sys.argv[1:]])
-        windll.shell32.ShellExecuteW(
-            None, "runas", sys.executable, f'"{script}" {params}', None, 1
+
+        # Pasează parametrul --admin
+        params = " ".join([f'"{arg}"' for arg in sys.argv[1:]] + ["--admin"])
+
+        # Rulează cu drepturi de admin
+        ctypes.windll.shell32.ShellExecuteW(
+            None,
+            "runas",
+            sys.executable,
+            f'"{script}" {params}',
+            None,
+            1  # SW_SHOWNORMAL
         )
-        sys.exit(0)
-
-
-if __name__ == "__main__":
-    run_as_admin()
+        sys.exit(0)  # Ieși imediat

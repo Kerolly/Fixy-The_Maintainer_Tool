@@ -1,8 +1,5 @@
 from core.admin_check import run_as_admin
 from tkinter import *
-from PIL import Image as PILImage, ImageTk as PILImageTk
-from core.version import VERSION
-from ui.style import *
 from ui.header import build_header
 from ui.left_side import build_left_side
 from ui.right_side import build_right_side
@@ -37,5 +34,6 @@ def create_main_window():
     window.mainloop()
 
 if __name__ == "__main__":
+    run_as_admin()
     create_main_window()
 

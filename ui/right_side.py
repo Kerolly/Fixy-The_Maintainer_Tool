@@ -2,9 +2,13 @@ from tkinter import *
 from ui.style import *
 from PIL import Image as PILImage, ImageTk as PILImageTk
 import core.state
+import os
 
 
 def build_right_side(root):
+
+    #get the absolut path
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
     # right side frame
     right_content_main_frame = Frame(root)
@@ -20,7 +24,8 @@ def build_right_side(root):
     system_clean_frame.grid(row=0, column=0, sticky='n', pady=(30, 0), padx=(60, 0))
 
     # icon
-    icon_system_clean = PILImage.open("../assets/icons/system_clean_icon.png")
+    ICON_SYSTEM_CLEAN_PATH = os.path.join(BASE_DIR, "..", "assets", "icons", "system_clean_icon.png")
+    icon_system_clean = PILImage.open(ICON_SYSTEM_CLEAN_PATH)
     icon_system_clean = icon_system_clean.resize((25, 25))
     icon_system_clean = PILImageTk.PhotoImage(icon_system_clean)
 
@@ -89,7 +94,8 @@ def build_right_side(root):
     maintenance_frame.grid(row=0, column=1, sticky='n', pady=(30, 0), padx=(120, 0))
 
     # icon
-    icon_maintenance = PILImage.open("../assets/icons/maintenance_icon.png")
+    ICON_MAINTENANCE_PATH = os.path.join(BASE_DIR, "..", "assets", "icons", "maintenance_icon.png")
+    icon_maintenance = PILImage.open(ICON_MAINTENANCE_PATH)
     icon_maintenance = icon_maintenance.resize((25, 25))
     icon_maintenance = PILImageTk.PhotoImage(icon_maintenance)
 
@@ -139,7 +145,8 @@ def build_right_side(root):
     chrome_frame.grid(row=1, column=0, sticky='n', pady=(30, 0), padx=(60, 0))
 
     # icon
-    icon_chrome = PILImage.open("../assets/icons/chrome_icon.png")
+    ICON_CHROME_PATH = os.path.join(BASE_DIR, "..", "assets", "icons", "chrome_icon.png")
+    icon_chrome = PILImage.open(ICON_CHROME_PATH)
     icon_chrome = icon_chrome.resize((25, 25))
     icon_chrome = PILImageTk.PhotoImage(icon_chrome)
 
@@ -208,7 +215,8 @@ def build_right_side(root):
     install_apps_frame.grid(row=1, column=1, sticky='n', pady=(30, 0), padx=(60, 0))
 
     # icon
-    icon_install_apps = PILImage.open("../assets/icons/install_apps_icon.png")
+    ICON_INSTALL_APPS_PATH = os.path.join(BASE_DIR, "..", "assets", "icons", "install_apps_icon.png")
+    icon_install_apps = PILImage.open(ICON_INSTALL_APPS_PATH)
     icon_install_apps = icon_install_apps.resize((25, 25))
     icon_install_apps = PILImageTk.PhotoImage(icon_install_apps)
 
