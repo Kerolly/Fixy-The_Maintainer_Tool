@@ -1,11 +1,12 @@
 import os
 import sys
+from core.generate_path import get_base_path
 from core.admin_check import *
 from tkinter import messagebox
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 HOSTS_PATH = r"C:\Windows\System32\drivers\etc\hosts"
-BLOCKED_SITES_PATH = os.path.join(BASE_DIR, "..", "core", "blocked_sites.txt")
+BLOCKED_SITES_PATH = get_base_path("core/blocked_sites.txt")
 
 
 def write_blocked_site_in_hosts_file():
