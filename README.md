@@ -7,6 +7,6 @@ Fixy - The Maintainer Tool is a personal desktop application designed to help ma
 - Organizing and renaming desktop icons
 - Customizing Google Chrome settings (Dark Mode, browsing history, auto-cookie-delete)
 - Installing essential apps (e.g., Python, PyCharm)
-
+- Blocking games sites and more
 This tool is to keep your laptop running smoothly.
 
