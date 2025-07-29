@@ -7,7 +7,6 @@ m.instagram.com
 www.tiktok.com
 vm.tiktok.com
 www.roblox.com
-setup.roblox.com
 web.roblox.com
 games.roblox.com
 www.miniclip.com
@@ -47,3 +46,5 @@ www.expedia.com
 www.tripadvisor.com
 www.cheapflights.com
 www.travelocity.com
+www.ikea.com
+www.emag.ro

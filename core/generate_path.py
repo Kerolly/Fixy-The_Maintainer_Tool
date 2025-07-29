@@ -2,6 +2,13 @@
 import os
 import sys
 
+'''
+-----------------------------------------------------------------
+Example of use:
+from core.generate_path import get_base_path
+-----------------------------------------------------------------
+'''
+
 def get_base_path(relative_path):
     """Returns the correct file path"""
     try:

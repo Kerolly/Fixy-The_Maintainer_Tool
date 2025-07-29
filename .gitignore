@@ -1,2 +1,16 @@
-.idea/
-__pycache__
+# Build folders
+dist/
+build/
+__pycache__/
+*.pyc
+
+# Executabile
+*.exe
+*.spec
+
+# Virtual env folder
+venv/
+
+# Other folders
+*.log
+*idea
