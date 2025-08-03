@@ -1,3 +1,4 @@
+# left_side.py
 from tkinter import *
 from ui.style import *
 

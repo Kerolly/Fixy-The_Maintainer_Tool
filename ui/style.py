@@ -1,3 +1,4 @@
+# style.py
 TITLE_FONT = ("Roboto", 18, 'bold')
 LABEL_FONT = ("Roboto", 15, 'normal')
 LABEL_BOLD_FONT = ("Roboto", 15, 'bold')

@@ -1,3 +1,4 @@
+# right_side.py
 from tkinter import *
 from ui.style import *
 from PIL import Image as PILImage, ImageTk as PILImageTk

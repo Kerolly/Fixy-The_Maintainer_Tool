@@ -1,3 +1,4 @@
+# footer.py
 from tkinter import *
 from core.version import VERSION
 
