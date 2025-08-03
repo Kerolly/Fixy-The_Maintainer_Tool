@@ -1,4 +1,4 @@
-#logging_config.py
+# logging_config.py
 import logging
 from core.generate_path import get_base_path
 import os
