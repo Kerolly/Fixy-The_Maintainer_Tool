@@ -12,11 +12,11 @@ def launch_selected_tasks():
         if value.get() == 1:
             selected_tasks.append(key)
 
-    app_logger.debug(f"Selected tasks: {selected_tasks}") # Logging
+    app_logger.debug(f"Selected tasks: {selected_tasks}") # logging
 
 
     if not selected_tasks:
-        app_logger.warning("No tasks selected") # Logging
+        app_logger.warning("No tasks selected") # logging
         messagebox.showwarning("Warning", "Please select at least one option to continue")
         return
 
@@ -25,17 +25,17 @@ def launch_selected_tasks():
         for task in selected_tasks:
             match task:
                 case "temp_file_clean":
-                    app_logger.info("Running temp file_clean") # Logging
+                    app_logger.info("Running temp file_clean") # logging
                     messagebox.showinfo("Succes", "Temp file cleaning")
-                    app_logger.info("Successfully cleaned temp file") # Logging
+                    app_logger.info("Successfully cleaned temp file") # logging
                 case "host_block":
-                    app_logger.info("Running host block") # Logging
+                    app_logger.info("Running host block") # logging
                     run_hosts_block()
-                    app_logger.info("Successfully ran host block") # Logging
+                    app_logger.info("Successfully ran host block") # logging
 
 
 
     except Exception as e:
         messagebox.showerror("Error", "Something went wrong!")
-        app_logger.error(e) # Logging
+        app_logger.error(e) # logging
 

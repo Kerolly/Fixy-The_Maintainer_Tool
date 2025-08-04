@@ -9,7 +9,7 @@ from utils.logging_config import app_logger
 
 def main():
 
-    #Logging
+    #logging
     print("[DEBUG] Am I admin?", is_admin())
     print("[DEBUG] Current folder:", os.getcwd())
 
@@ -22,12 +22,12 @@ def main():
         print("[DEBUG] Window is opennn!")
         create_main_window()
 
-        # Logging
+        # logging
         app_logger.info("Window is open")
 
     except Exception as e:
         print("[CRITICAL ERROR]", e)
-        # Logging
+        # logging
         app_logger.error(e)
 
         #input("Enter -> close ...")
@@ -41,7 +41,7 @@ if __name__ == "__main__":
     if "--admin" in sys.argv:
         main()
     else:
-        # Logging
+        # logging
         app_logger.warning("Something went wrong!")
         app_logger.info("Try running the admin rights script....")
         run_as_admin()

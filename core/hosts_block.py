@@ -14,7 +14,7 @@ BLOCKED_SITES_PATH = get_base_path("core/blocked_sites.txt")
 def write_blocked_site_in_hosts_file():
 
     if not is_admin():
-        # Logging
+        # logging
         print("Error: This app isn't running with admin!")
         app_logger.error("Error: This app isn't running with admin!")
         messagebox.showwarning("Warning", "This app isn't running with admin!")

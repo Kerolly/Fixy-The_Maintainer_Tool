@@ -17,7 +17,7 @@ def run_as_admin():
         try:
             print("[DEBUG] Relansăm cu admin...", flush=True)  # flush=True forțează afișarea
 
-            # Logging
+            # logging
             app_logger.info("Relaunch the admin")
 
             # Get the abs path

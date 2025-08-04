@@ -35,14 +35,14 @@ def create_main_window():
         window.mainloop()
 
     except Exception as e:
-        # Logging
+        # logging
         app_logger.error(e)
 
 
 
 
 if __name__ == "__main__":
-    # Logging
+    # logging
     app_logger.info("Running the admin script")
     run_as_admin()
     create_main_window()
