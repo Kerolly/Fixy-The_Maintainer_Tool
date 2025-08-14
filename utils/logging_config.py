@@ -6,7 +6,7 @@ import os
 '''
 -----------------------------------------------------------------
 Example of use:
-from utils.logger_config import app_logger, updater_logger
+from utils.logging_config import app_logger, updater_logger
 -----------------------------------------------------------------
 '''
 
