@@ -1,6 +1,6 @@
 # logging_config.py
 import logging
-from core.generate_path import get_base_path
+from utils.path_manager import get_logging_path
 import os
 
 '''
@@ -11,8 +11,8 @@ from utils.logging_config import app_logger, updater_logger
 '''
 
 
-APP_LOG_FILE_PATH = get_base_path("logging/app.log") #full abs path for app log
-UPDATER_LOG_FILE_PATH = get_base_path("logging/updaters.log") #full abs path for updaters log
+APP_LOG_FILE_PATH = get_logging_path("app.log") #full abs path for app log
+UPDATER_LOG_FILE_PATH = get_logging_path("updaters.log") #full abs path for updaters log
 
 logging.basicConfig(level=logging.DEBUG,
                     handlers=[])
