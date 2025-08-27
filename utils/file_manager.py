@@ -32,7 +32,7 @@ def download_file(url, filename=''):
     create_dir(temp_folder)
 
     # Generate the full path for the zip file, where to download
-    full_temp_path = os.path.join(temp_folder, filename)
+    full_temp_path = os.path.join(temp_folder, filename).replace("\\", "/")
     updater_logger.debug(f"Full temp zip file path: {full_temp_path}")
     print(temp_folder)
 
@@ -48,11 +48,11 @@ def download_file(url, filename=''):
                 for chunk in req.iter_content(chunk_size=8192):
                     if chunk:
                         f.write(chunk)
-            updater_logger.info(f"Finished download: {filename}\nFullpath: {full_temp_path}") # logging
-            end = time.time() # stop timer
 
-            # logging the download time
-            updater_logger.info(f"Download time: {end - start}")
+            end = time.time()  # stop timer
+            updater_logger.info(f"Finished download: {filename}\nFullpath: {full_temp_path}\n"
+                                f"Download time: {end - start}") # logging
+
             print(f"Total downloaded time: {end - start}\n")
         except Exception as e:
             updater_logger.error(e) # logging
