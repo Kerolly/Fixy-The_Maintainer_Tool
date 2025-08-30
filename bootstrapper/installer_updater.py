@@ -31,4 +31,4 @@ def deploy_updater(updater_path_src, updater_path_dst):
 
 # Testing
 
-deploy_updater("../temp/Fixy", "../TestFixy")
+#deploy_updater("../temp/Fixy", "../TestFixy")
