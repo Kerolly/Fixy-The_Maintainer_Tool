@@ -5,29 +5,30 @@ import requests
 import os
 import time
 import zipfile
-
-'''
------------------------------------------------------------------
-Example of use:
-from utils.file_manager import download_file(), create_dir()
-
-download_file(url, filename)
-create_dir()
------------------------------------------------------------------
-'''
+import shutil
 
 
 def download_file(url, filename=''):
+    """
+    -----------------------------------------------------------------
+    Example of use:
+    from utils.file_manager import download_file(), create_dir()
+
+    download_file(url, filename)
+    create_dir()
+    -----------------------------------------------------------------
+    """
+
     if filename:
-        pass # if there is a filename, then pass
-        app_logger.debug(f"File name: {filename}") # logging
+        pass  # if there is a filename, then pass
+        app_logger.debug(f"File name: {filename}")  # logging
     else:
-        filename = url.split('/')[-1] # get the file name from url
-        app_logger.debug(f"File name: {filename}") # logging
+        filename = url.split('/')[-1]  # get the file name from url
+        app_logger.debug(f"File name: {filename}")  # logging
 
     # Generate the path for temp folder
     temp_folder = get_base_path("temp")
-    app_logger.debug(f"Temp folder path: {temp_folder}") # logging
+    app_logger.debug(f"Temp folder path: {temp_folder}")  # logging
 
     # Create the folder or not
     create_dir(temp_folder)
@@ -37,13 +38,13 @@ def download_file(url, filename=''):
     app_logger.debug(f"Full temp zip file path: {full_temp_path}")
     print(temp_folder)
 
-    start = time.time() # start timer
-    req = requests.get(url, stream=True) # get the req
+    start = time.time()  # start timer
+    req = requests.get(url, stream=True)  # get the req
 
     if req.status_code == 200:
 
         try:
-            app_logger.info(f"Starting download: {filename}") # logging
+            app_logger.info(f"Starting download: {filename}")  # logging
 
             with open(full_temp_path, 'wb') as f:
                 for chunk in req.iter_content(chunk_size=8192):
@@ -52,47 +53,46 @@ def download_file(url, filename=''):
 
             end = time.time()  # stop timer
             app_logger.info(f"Finished download: {filename}\nFullpath: {full_temp_path}\n"
-                                f"Download time: {end - start}") # logging
+                            f"Download time: {end - start}")  # logging
 
             print(f"Total downloaded time: {end - start}\n")
         except Exception as e:
-            app_logger.error(e) # logging
+            app_logger.error(e)  # logging
 
     else:
-        app_logger.error(f'Download failed, status code: {req.status_code}') # logging
+        app_logger.error(f'Download failed, status code: {req.status_code}')  # logging
 
 
 def create_dir(path):
     # Check if there is or not a folder at that path
     if not os.path.exists(path):
-        os.makedirs(path, exist_ok=True) # Create one
+        os.makedirs(path, exist_ok=True)  # Create one
 
 
-""" ---------------------------------------
-Return:  True, if deleted the file
-            False, if wasn't deleted
---------------------------------------- """
 def delete_file(file_path):
-    app_logger.debug(f"File name: {file_path}") # logging
+    """ ---------------------------------------
+    Return:  True, if deleted the file
+                False, if wasn't deleted
+    --------------------------------------- """
+
+    app_logger.debug(f"File name: {file_path}")  # logging
 
     if os.path.exists(file_path):
         os.remove(file_path)
-        app_logger.info(f"Successful deleted file: {file_path}") # logging
+        app_logger.info(f"Successful deleted file: {file_path}")  # logging
         return True
 
     else:
-        app_logger.warning(f"File does not exist: {file_path}") # logging
+        app_logger.warning(f"File does not exist: {file_path}")  # logging
         return False
 
 
-
-
-""" ---------------------------------------
-Give the - full path of the zip file
-         - output dir, default = temp, folder
---------------------------------------- """
-
 def unzip(zip_file_path, output_dir=''):
+    """ ---------------------------------------
+    Give the - full path of the zip file
+             - output dir, default = temp, folder
+    --------------------------------------- """
+
     if output_dir:
         pass
     else:
@@ -115,7 +115,7 @@ def unzip(zip_file_path, output_dir=''):
 
         # Cleaning the zip file
         app_logger.debug(f"Deleting zip file: {zip_file_path}")
-        delete_file(zip_file_path) # Deleting the zip file
+        delete_file(zip_file_path)  # Deleting the zip file
         app_logger.info(f"Successful deleted file: {zip_file_path}")
 
         # Timer
@@ -127,9 +127,49 @@ def unzip(zip_file_path, output_dir=''):
         print(e)
 
 
+def deploy_files(src, dst, copy_entire_folder=True):
+    """ ---------------------------------------
+    Give the - src: source of the folder
+             - dst: destination of the folder
+             - copy_entire_folder: default: True
+                                   True: copy entire folder, ex: ex/assets -> copied: ex/assets
+                                   False: copy only the subfolders/files, ex: ex/assets -> copied: assets
+    --------------------------------------- """
 
+    try:
+        if os.path.exists(src):
+
+            if copy_entire_folder:
+                shutil.copytree(src, dst, dirs_exist_ok=True)  # Copy the entire folder
+                print("Debug")
+                # logging
+                app_logger.info(f"Successfully deployed, entire folder {dst}")
+                print("Successfully deployed, entire folder")
+
+            else:
+                shutil.copytree(src, dst, copy_function=shutil.copy,
+                                dirs_exist_ok=True)  # Copy only the subfolders/files
+                print("Debug")
+                # logging
+                app_logger.info(f"Successfully deployed, subfolders {dst}")
+                print("Successfully deployed, subfolders")
+
+        else:
+            app_logger.warning(f"File does not exist: {src}")
+            print("File does not exist")
+
+    except Exception as e:
+        app_logger.error(f"Failed to deploy \n Src: {src} \n Dst: {dst}\n"
+                         f"Error: {e}")
+        print(e)
 
 
 # Testing
-download_file("https://github.com/Kerolly/Fixy-The_Maintainer_Tool/releases/download/v0.0.1/Fixy.zip")
-unzip("../temp/Fixy.zip")
+#download_file("https://github.com/Kerolly/Fixy-The_Maintainer_Tool/releases/download/v0.0.1/Fixy.zip")
+#unzip("../temp/Fixy.zip")
+
+# Entire folder
+deploy_files("../temp/Fixy", "../TestFixy")
+
+# Subfolders
+deploy_files("../temp/Fixy", "../", False)
