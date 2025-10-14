@@ -74,10 +74,10 @@ file_size_check(APP_LOG_FILE_PATH)
 app_logger = setup_app_logger()
 app_logger.debug("Initializing the app logger")
 
-try:
-    x = 1/0
-except Exception as e:
-    app_logger.error(f"Error {e}")
+#try:
+#    x = 1/0
+#except Exception as e:
+#    app_logger.error(f"Error {e}")
 
 
 #-------------------------------------------
