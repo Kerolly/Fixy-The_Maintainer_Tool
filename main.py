@@ -26,10 +26,10 @@ def main():
         # Call the bootstrapper
         if getattr(sys, 'frozen', False):
             # Run if is exe
-            bootstrapper_path = get_base_path("bootstrapper")
+            bootstrapper_path = "bootstrapper"
         else:
             # Run if is dev mode
-            bootstrapper_path = get_base_path("bootstrapper/bootstrapper")
+            bootstrapper_path = "bootstrapper/bootstrapper"
 
         process = run_subprocess(bootstrapper_path, wait=False, silent=False)
         print("exit code:", process.returncode)
