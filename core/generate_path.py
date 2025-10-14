@@ -1,33 +1,43 @@
 # generate_path.py
-import os
+from pathlib import Path
 import sys
-#from utils.logging_config import app_logger
 
-'''
+"""
 -----------------------------------------------------------------
 Example of use:
 from core.generate_path import get_base_path
 
-get_base_path("Exemple/app.log")
+get_base_path("exemple/app.log")
 -----------------------------------------------------------------
-'''
+"""
 
-def get_base_path(relative_path):
-    """Returns the correct file path"""
-    try:
-        base_path = sys._MEIPASS
+def get_app_root():
+    """
+    Returns the absolute path to the application's root directory.
 
-        # logging
-        #app_logger.debug(f"Running from build (Pyinstaller): {base_path}")
-    except AttributeError:
-        base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+    When running from a frozen executable (cx_Freeze),
+    this points to the directory containing the .exe file.
 
-        # logging
-        #app_logger.debug(f"Running from local: {base_path}")
+    When running in dev mode (from source code),
+    this points to the directory containing this script.
+    """
+    if getattr(sys, "frozen", False):
+        # Run from exe
+        exe_dir = Path(sys.executable).resolve().parent
+    else:
+        # Run in dev mode
+        exe_dir = Path(__file__).resolve().parent
 
-    full_path = os.path.join(base_path, relative_path)
+    return exe_dir
 
-    # logging
-    #app_logger.info(f"Full path generated: {full_path}")
 
-    return full_path.replace("\\", "/")
+def get_base_path(relative_path) -> str:
+    """
+    Returns the absolute path to a file or directory
+    relative to the application's root directory.
+
+     Example:
+        >>> get_base_path("assets/logo.png")
+        'C:\\Path\\To\\App\\assets\\logo.png'
+    """
+    return str((get_app_root() / relative_path).resolve())
