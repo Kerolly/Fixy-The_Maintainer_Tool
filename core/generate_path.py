@@ -11,7 +11,7 @@ get_base_path("exemple/app.log")
 -----------------------------------------------------------------
 """
 
-def get_app_root():
+def get_app_root() -> Path:
     """
     Returns the absolute path to the application's root directory.
 
@@ -26,12 +26,12 @@ def get_app_root():
         exe_dir = Path(sys.executable).resolve().parent
     else:
         # Run in dev mode
-        exe_dir = Path(__file__).resolve().parent
+        exe_dir = Path(__file__).resolve().parent.parent
 
     return exe_dir
 
 
-def get_base_path(relative_path) -> str:
+def get_base_path(relative_path:str) -> str:
     """
     Returns the absolute path to a file or directory
     relative to the application's root directory.
