@@ -6,6 +6,7 @@ from core.admin_check import run_as_admin, is_admin
 from ui.main_window import create_main_window
 from utils.logging_config import app_logger
 from utils.subprocess_manager import run_subprocess
+from core.generate_path import get_base_path
 
 
 def main():
@@ -20,9 +21,17 @@ def main():
     app_logger.info("Starting the app!")
 
     try:
+        #print(get_base_path("bootstrapper/bootstrapper"))
 
         # Call the bootstrapper
-        process = run_subprocess("bootstrapper/bootstrapper", wait=False, silent=False)
+        if getattr(sys, 'frozen', False):
+            # Run if is exe
+            bootstrapper_path = get_base_path("bootstrapper")
+        else:
+            # Run if is dev mode
+            bootstrapper_path = get_base_path("bootstrapper/bootstrapper")
+
+        process = run_subprocess(bootstrapper_path, wait=False, silent=False)
         print("exit code:", process.returncode)
         print(f"PID is {process.pid}")
 
