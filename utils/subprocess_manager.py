@@ -1,6 +1,7 @@
 # subprocess_manager.py
 import subprocess
 import sys
+import os
 from core.generate_path import get_base_path
 from utils.logging_config import app_logger
 
@@ -22,7 +23,7 @@ def run_subprocess(path, wait=True, silent=False):
     Run a subprocess and return its output
     It could be .exe or script (.py)
 
-    :param path: path for the subprocess
+    :param path: relative path for the subprocess
     :param wait: True -> wait to finish the subprocess, False -> run asynchronously
     :param silent: True -> no console or GUI, False -> with console or GUI
     :return: exit code (int) if wait=True, or subprocess.Popen object if wait=False
@@ -54,12 +55,12 @@ def run_subprocess(path, wait=True, silent=False):
             start_up_info.wShowWindow = subprocess.SW_HIDE
 
         if wait:
-            result = subprocess.run(cmd, startupinfo=start_up_info)
+            result = subprocess.run(cmd, startupinfo=start_up_info, cwd=os.path.dirname(sys.executable))
             app_logger.debug(f"Full path for run: {abs_path}")
             app_logger.info(f"Subprocess exit code: {result.returncode}")
             return result.returncode
         else:
-            process = subprocess.Popen(cmd, startupinfo=start_up_info)
+            process = subprocess.Popen(cmd, startupinfo=start_up_info, cwd=os.path.dirname(sys.executable))
             app_logger.debug(f"Full path for popen: {abs_path}")
             app_logger.info(f"Subprocess PID code: {process.pid}")
             return process
