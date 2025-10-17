@@ -1,4 +1,4 @@
-# version_checker.py
+# version_manager.py
 from utils.logging_config import updater_logger
 from packaging import version
 from core.generate_path import get_base_path
@@ -108,5 +108,51 @@ def get_remote_version():
 
     return remote_data
 
+def update_local_version(version_for, new_version, json_path=''):
+    """
+
+    :param version_for: updater/ fixy/ bootstrapper
+    :param new_version: New version from remote server
+    :param json_path: Path for the json file
+
+    Updates the local version of the json file \n
+    If json_path is empty, is getting automated path for the json file
+    """
+
+    # Getting auto json path
+    if json_path == '':
+        json_path = get_base_path("versions.json")
+
+    # Prepare the target to write new version
+    if version_for == 'updater':
+        target = "updater_version"
+    elif version_for == 'fixy':
+        target = "fixy_version"
+    elif version_for == 'bootstrapper':
+        target = "bootstrapper_version"
+    else:
+        raise Exception(f"Unknown version for: {version_for} to update the local version json")
+
+    print(f"Updating local version json for {target}")
+    updater_logger.info(f"Updating local version for {target}")
+
+    try:
+        with open(json_path, "r") as f:
+            data = json.load(f)
+
+        data[target] = new_version # write the new version in json
+
+        with open(json_path, "w") as f:
+            json.dump(data, f)
+
+        print(f"Successfully updated local version json for {target}")
+        updater_logger.info(f"Successfully updated local version for {target}")
+
+    except Exception as e:
+        print(f"Error updating local version json for {target}: {e}")
+        updater_logger.error(f"Error updating local version json for {target}: {e}")
+
+
 # Testing
 #check_versions(get_local_version(), get_remote_version(), version_for='updater')
+#update_local_version("updater", "0.2")
