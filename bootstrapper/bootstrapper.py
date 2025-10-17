@@ -5,9 +5,10 @@ import sys
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))) # added to sys.path
 from utils.logging_config import updater_logger
-from utils.version_checker import check_versions
+from utils.version_manager import check_versions, update_local_version
 from utils.file_manager import download_file, unzip, deploy_files
 from core.generate_path import get_base_path
+from utils.subprocess_manager import run_subprocess
 
 def bootstrapper():
     print("Bootstrapper started")
@@ -33,25 +34,42 @@ def bootstrapper():
                     updater_logger.info(f"Unzip successful {unzipped_path}")
 
                     # getting the dst folder for updater
-                    dst_folder = get_base_path("updater")
+                    dst_folder = get_base_path("") # root of the app
                     if deploy_files(unzipped_path, dst_folder, copy_entire_folder=False):
                         print(f"Deploy successful, here {dst_folder}")
                         updater_logger.info(f"Deploy successful, here {dst_folder}")
+
+                        # writing the new version to json
+                        update_local_version(version_for="updater", new_version=versions_results[3])
+
+        run_updater()
 
     except Exception as e:
         print(f"Bootstrapper error: {e}")
         updater_logger.error(f"Bootstrapper error: {e}")
 
+def run_updater():
 
+    try:
+        # Call the updater
+        if getattr(sys, 'frozen', False):
+            # Run if is exe
+            updater_path = "updater"
+        else:
+            # Run if is dev mode
+            updater_path = "updater/updater"
 
+        process = run_subprocess(updater_path, wait=False, silent=False)
+        print("exit code:", process.returncode)
+        print(f"PID is {process.pid}")
 
-
-
-
-
+    except Exception as e:
+        print(f"Bootstrapper try to open updater error: {e}")
+        updater_logger.error(f"Bootstrapper try to open updater error: {e}")
 
 
 
 
 if __name__ == '__main__':
     bootstrapper()
+
