@@ -1,5 +1,6 @@
 # main_window.py
 from core.admin_check import run_as_admin
+from core.generate_path import get_base_path
 from tkinter import *
 from ui.header import build_header
 from ui.left_side import build_left_side
@@ -14,6 +15,8 @@ def create_main_window():
         window = Tk()
         window.title("Fixy-The Maintainer Tool") #window title
         window.geometry("850x600") #window size
+
+        window.iconbitmap(get_base_path("assets/icons/fixy.ico"))
 
         #header builder
         build_header(window)
