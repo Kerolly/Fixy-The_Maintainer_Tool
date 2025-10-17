@@ -1,8 +1,8 @@
 {
-  "fixy_version": "0.0.1",
+  "fixy_version": "0.0.2",
   "fixy_zip_url": "https://github.com/Kerolly/Fixy-The_Maintainer_Tool/releases/download/v0.0.1/Fixy.zip",
   
-  "updater_version": "0.1",
+  "updater_version": "0.2",
   "updater_zip_url": "https://github.com/Kerolly/Fixy-The_Maintainer_Tool/releases/download/v0.0.1/Updater.zip",
   
   "bootstrapper_version": "0.2",
