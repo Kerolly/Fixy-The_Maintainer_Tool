@@ -1,9 +1,12 @@
 # footer.py
 from tkinter import *
-from core.version import VERSION
+from utils.file_manager import read_from_json
+from utils.generate_path import get_base_path
 
 
 def build_footer(root):
+    data = read_from_json(get_base_path("versions.json"))
+
     # footer frame
     footer_frame = Frame(root, height=30)
     footer_frame.pack_propagate(False)
@@ -19,5 +22,5 @@ def build_footer(root):
     made_by_title.pack(side="left", padx=(25, 0))
 
     version_title = Label(footer_frame,
-                          text="Version: " + VERSION)
+                          text="Version: " + data["fixy_version"])
     version_title.pack()
