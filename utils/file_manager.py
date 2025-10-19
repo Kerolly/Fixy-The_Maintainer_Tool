@@ -6,6 +6,7 @@ import os
 import time
 import zipfile
 import shutil
+import json
 
 
 def download_file(url, filename=''):
@@ -197,6 +198,24 @@ def deploy_files(src, dst, copy_entire_folder=True):
         print(f"Failed to deploy \n Src: {src} \n Dst: {dst}\n"
                          f"Error: {e}")
         raise Exception(e)
+
+
+def read_from_json(file_path):
+
+    try:
+        print(f"Reading from json file {file_path}")
+        app_logger.debug(f"Reading from json file {file_path}")
+
+        with open(file_path, "r") as json_file:
+            data = json.load(json_file)
+
+        print("Successful read")
+        app_logger.debug(f"Successful read")
+        return data
+
+    except Exception as e:
+        print(f"Failed to read from json file, file: {file_path}\n {e}")
+        app_logger.error(f"Failed to read from json file, file: {file_path}\n {e}")
 
 
 # Testing
