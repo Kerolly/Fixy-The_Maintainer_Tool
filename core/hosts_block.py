@@ -7,7 +7,8 @@ from utils.logging_config import app_logger
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 HOSTS_PATH = r"C:\Windows\System32\drivers\etc\hosts"
 BLOCKED_SITES_PATH = get_base_path("blocked_sites.txt")
-
+BACKUP_HOSTS_FILE_PATH = get_base_path("backup/hosts_backup.txt")
+BACKUP_FOLDER_PATH = get_base_path("backup")
 
 def write_blocked_site_in_hosts_file():
 
@@ -45,17 +46,25 @@ def write_blocked_site_in_hosts_file():
                 print("[DEBUG] Writing the hosts file...")
                 app_logger.debug("Writing the hosts file...")
                 count_new_blocked_sites = 0
-                hosts_file.write("\n\nBlocked sites:\n")
+                if not "Blocked sites:" in existing_hosts_file:
+                    hosts_file.write("\n\nBlocked sites:\n")
 
                 for site in blocked_sites:
                     if f"127.0.0.1 {site}" in existing_hosts_file:
-                        print("This site exist!")
+                        print(f"This site exist! {site}")
                         app_logger.info(f"This site exist! {site}")
                     else:
                         hosts_file.write(f"127.0.0.1 {site.strip()}\n")
                         count_new_blocked_sites += 1
                 print(f"[LOG] Successful written {count_new_blocked_sites}")
                 app_logger.info(f"Successful written {count_new_blocked_sites}")
+
+            # Create a backup of the default host file
+            if not os.path.exists(BACKUP_HOSTS_FILE_PATH):
+                os.makedirs(BACKUP_FOLDER_PATH, exist_ok=True)
+                with open(BACKUP_HOSTS_FILE_PATH, "w") as backup_file:
+                    backup_file.write(existing_hosts_file)
+
         except PermissionError as e:
             print(f"[Error]: You don't have permissions to modify\n {e}")
             app_logger.error(f"You don't have permissions to modify\n {e}")
