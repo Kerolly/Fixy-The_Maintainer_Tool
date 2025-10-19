@@ -49,7 +49,7 @@ def build_left_side(root):
 
     # new setup checkbox
     new_setup_checkbox = Checkbutton(left_content_buttons_frame,
-                                     text='New Setup',
+                                     text='New Setup', # New Setup
                                      variable=new_setup_button)
     new_setup_checkbox.config(font=LABEL_FONT,
                               bg='#D9D9D9',

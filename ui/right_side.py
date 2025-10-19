@@ -2,7 +2,7 @@
 from tkinter import *
 from ui.style import *
 from PIL import Image as PILImage, ImageTk as PILImageTk
-from core.generate_path import get_base_path
+from utils.generate_path import get_base_path
 import core.state
 import os
 

@@ -8,9 +8,8 @@ from updater_ui.popups import *
 from utils.logging_config import updater_logger
 from utils.version_manager import check_versions, update_local_version
 from utils.file_manager import download_file, unzip, deploy_files
-from core.generate_path import get_base_path
-from utils.subprocess_manager import run_subprocess
-from updater_ui import *
+from utils.generate_path import get_base_path
+
 
 def updater():
     print("\nChecking for update ...")

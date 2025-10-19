@@ -1,6 +1,7 @@
 # logging_config.py
 import logging
-from utils.path_manager import get_logging_path
+#from utils.path_manager import get_logging_path
+from utils.generate_path import get_base_path
 import os
 
 '''
@@ -9,10 +10,13 @@ Example of use:
 from utils.logging_config import app_logger, updater_logger
 -----------------------------------------------------------------
 '''
+#print(get_base_path("logging"))
 
 
-APP_LOG_FILE_PATH = get_logging_path("app.log") #full abs path for app log
-UPDATER_LOG_FILE_PATH = get_logging_path("updaters.log") #full abs path for updaters log
+os.makedirs(get_base_path("logging"), exist_ok=True) # check if there is logging folder or create it
+
+APP_LOG_FILE_PATH = get_base_path("logging/app.log") #full abs path for app log
+UPDATER_LOG_FILE_PATH = get_base_path("logging/updaters.log") #full abs path for updaters log
 
 logging.basicConfig(level=logging.DEBUG,
                     handlers=[])
@@ -20,7 +24,7 @@ logging.basicConfig(level=logging.DEBUG,
 #file size checking
 def file_size_check(log_file_path):
     # get the size of log file
-    if os.path.getsize(log_file_path) >= 1048576: # 1048576Bytes -> 1Mb
+    if os.path.getsize(log_file_path) >= 524288: # 524288Bytes -> 0.5Mb
         os.remove(log_file_path)
 
 

@@ -2,7 +2,7 @@
 import subprocess
 import sys
 import os
-from core.generate_path import get_base_path
+from utils.generate_path import get_base_path
 from utils.logging_config import app_logger
 
 """

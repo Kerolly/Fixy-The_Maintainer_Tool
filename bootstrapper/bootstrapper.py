@@ -7,7 +7,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))) # a
 from utils.logging_config import updater_logger
 from utils.version_manager import check_versions, update_local_version
 from utils.file_manager import download_file, unzip, deploy_files
-from core.generate_path import get_base_path
+from utils.generate_path import get_base_path
 from utils.subprocess_manager import run_subprocess
 
 def bootstrapper():

@@ -1,7 +1,7 @@
 # version_manager.py
 from utils.logging_config import updater_logger
 from packaging import version
-from core.generate_path import get_base_path
+from utils.generate_path import get_base_path
 import json
 import requests
 

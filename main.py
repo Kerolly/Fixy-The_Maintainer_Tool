@@ -1,12 +1,10 @@
 # main.py
 import os
 import sys
-import subprocess
 from core.admin_check import run_as_admin, is_admin
 from ui.main_window import create_main_window
 from utils.logging_config import app_logger
 from utils.subprocess_manager import run_subprocess
-from core.generate_path import get_base_path
 
 
 def main():

@@ -1,6 +1,6 @@
 # file_manager.py
 from utils.logging_config import app_logger
-from core.generate_path import get_base_path
+from utils.generate_path import get_base_path
 import requests
 import os
 import time
