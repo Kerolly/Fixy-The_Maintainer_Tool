@@ -51,7 +51,8 @@ def main():
 
 
 if __name__ == "__main__":
-    if "--admin" in sys.argv:
+    #if "--admin" in sys.argv:
+    if is_admin():
         main()
     else:
         # logging
