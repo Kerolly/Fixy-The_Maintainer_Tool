@@ -2,6 +2,7 @@
 from tkinter import *
 from ui.style import *
 from core.launch_tasks import launch_selected_tasks
+from bootstrapper.bootstrapper import run_updater
 
 
 #header builder
@@ -23,7 +24,7 @@ def build_header(root):
     buttons_frame = Frame(header_frame, padx='20')  # buttons frame
     buttons_frame.pack(side='right', fill='x')
 
-    header_update_button = Button(buttons_frame, text="Update", font=BUTTON_FONT)  # update button
+    header_update_button = Button(buttons_frame, text="Update", font=BUTTON_FONT, command=run_updater)  # update button
     header_update_button.pack(side='left', padx='20')
 
     header_launch_button = Button(buttons_frame, text="Launch",

@@ -53,13 +53,15 @@ def build_right_side(root):
     temp_file_clean_checkbox = Checkbutton(system_clean_frame,
                                            text="Clean temp file",
                                            variable=temp_file_clean_button,
+                                           state="disabled",
                                            font=CHECKBOX_FONT)
 
-    temp_file_clean_checkbox.pack(anchor='w', padx=(15, 0), pady=(3, 0))
+    temp_file_clean_checkbox.pack(anchor='w',padx=(15, 0), pady=(3, 0))
 
     # clean download file
     download_folder_clean_checkbox = Checkbutton(system_clean_frame,
                                                  text="Clean download folder",
+                                                 state="disabled",
                                                  variable=download_folder_clean_button,
                                                  font=CHECKBOX_FONT)
 
@@ -69,6 +71,7 @@ def build_right_side(root):
     recycle_bin_clean_checkbox = Checkbutton(system_clean_frame,
                                              text="Clean recycle bin",
                                              variable=recycle_bin_clean_button,
+                                             state="disabled",
                                              font=CHECKBOX_FONT)
 
     recycle_bin_clean_checkbox.pack(anchor='w', padx=(15, 0), pady=(3, 0))
@@ -77,6 +80,7 @@ def build_right_side(root):
     windows_update_checkbox = Checkbutton(system_clean_frame,
                                           text="Windows update",
                                           variable=windows_update_button,
+                                          state="disabled",
                                           font=CHECKBOX_FONT)
 
     windows_update_checkbox.pack(anchor='w', padx=(15, 0), pady=(3, 0))
@@ -85,6 +89,7 @@ def build_right_side(root):
     disk_clean_checkbox = Checkbutton(system_clean_frame,
                                       text="Disk cleanUp",
                                       variable=disk_clean_button,
+                                      state="disabled",
                                       font=CHECKBOX_FONT)
 
     disk_clean_checkbox.pack(anchor='w', padx=(15, 0), pady=(3, 0))
@@ -121,6 +126,7 @@ def build_right_side(root):
     desktop_clean_checkbox = Checkbutton(maintenance_frame,
                                          text="Desktop clean",
                                          variable=desktop_clean_button,
+                                         state="disabled",
                                          font=CHECKBOX_FONT)
 
     desktop_clean_checkbox.pack(anchor='w', padx=(15, 0), pady=(3, 0))
@@ -129,6 +135,7 @@ def build_right_side(root):
     mouse_speed_checkbox = Checkbutton(maintenance_frame,
                                        text="Mouse speed",
                                        variable=mouse_speed_button,
+                                       state="disabled",
                                        font=CHECKBOX_FONT)
 
     mouse_speed_checkbox.pack(anchor='w', padx=(15, 0), pady=(3, 0))
@@ -174,6 +181,7 @@ def build_right_side(root):
     auto_opening_site_checkbox = Checkbutton(chrome_frame,
                                              text="Auto opening mylogiscool",
                                              variable=auto_opening_site_button,
+                                             state="disabled",
                                              font=CHECKBOX_FONT)
 
     auto_opening_site_checkbox.pack(anchor='w', padx=(15, 0), pady=(3, 0))
@@ -182,6 +190,7 @@ def build_right_side(root):
     dark_mode_chrome_checkbox = Checkbutton(chrome_frame,
                                             text="Dark Mode Chrome",
                                             variable=dark_mode_chrome_button,
+                                            state="disabled",
                                             font=CHECKBOX_FONT)
 
     dark_mode_chrome_checkbox.pack(anchor='w', padx=(15, 0), pady=(3, 0))
@@ -190,6 +199,7 @@ def build_right_side(root):
     clean_history_checkbox = Checkbutton(chrome_frame,
                                          text="Clean history",
                                          variable=clean_history_button,
+                                         state="disabled",
                                          font=CHECKBOX_FONT)
 
     clean_history_checkbox.pack(anchor='w', padx=(15, 0), pady=(3, 0))
@@ -198,6 +208,7 @@ def build_right_side(root):
     auto_cookie_delete_checkbox = Checkbutton(chrome_frame,
                                               text="Auto Cookie Delete",
                                               variable=auto_cookie_delete_button,
+                                              state="disabled",
                                               font=CHECKBOX_FONT)
 
     auto_cookie_delete_checkbox.pack(anchor='w', padx=(15, 0), pady=(3, 0))
@@ -206,6 +217,7 @@ def build_right_side(root):
     set_background_checkbox = Checkbutton(chrome_frame,
                                           text="Set background",
                                           variable=set_background_button,
+                                          state="disabled",
                                           font=CHECKBOX_FONT)
 
     set_background_checkbox.pack(anchor='w', padx=(15, 0), pady=(3, 0))
@@ -241,6 +253,7 @@ def build_right_side(root):
     python_app_checkbox = Checkbutton(install_apps_frame,
                                       text="Python",
                                       variable=python_app_button,
+                                      state="disabled",
                                       font=CHECKBOX_FONT)
 
     python_app_checkbox.pack(anchor='w', padx=(15, 0), pady=(3, 0))
@@ -249,6 +262,7 @@ def build_right_side(root):
     pycharm_app_checkbox = Checkbutton(install_apps_frame,
                                        text="Pycharm",
                                        variable=pycharm_app_button,
+                                       state="disabled",
                                        font=CHECKBOX_FONT)
 
     pycharm_app_checkbox.pack(anchor='w', padx=(15, 0), pady=(3, 0))

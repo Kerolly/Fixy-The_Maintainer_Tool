@@ -23,6 +23,7 @@ def build_left_side(root):
     # week maintanance checkbox
     week_maintanance_checkbox = Checkbutton(left_content_buttons_frame,
                                             text='Week Maintanance',
+                                            state="disabled",
                                             variable=week_maintanance_button)
     week_maintanance_checkbox.config(font=LABEL_FONT,
                                      bg='#D9D9D9',
@@ -32,7 +33,8 @@ def build_left_side(root):
     # super clean checkbox
     super_clean_checkbox = Checkbutton(left_content_buttons_frame,
                                        text='Super Clean',
-                                       variable=super_clean_button)
+                                       variable=super_clean_button,
+                                       state="disabled")
     super_clean_checkbox.config(font=LABEL_FONT,
                                 bg='#D9D9D9',
                                 activebackground='#D9D9D9')
@@ -41,7 +43,8 @@ def build_left_side(root):
     # logicamp apps checkbox
     logicamp_apps_checkbox = Checkbutton(left_content_buttons_frame,
                                          text='Logicamp Apps',
-                                         variable=logicamp_apps_button)
+                                         variable=logicamp_apps_button,
+                                         state="disabled")
     logicamp_apps_checkbox.config(font=LABEL_FONT,
                                   bg='#D9D9D9',
                                   activebackground='#D9D9D9')
@@ -50,7 +53,8 @@ def build_left_side(root):
     # new setup checkbox
     new_setup_checkbox = Checkbutton(left_content_buttons_frame,
                                      text='New Setup', # New Setup
-                                     variable=new_setup_button)
+                                     variable=new_setup_button,
+                                     state="disabled")
     new_setup_checkbox.config(font=LABEL_FONT,
                               bg='#D9D9D9',
                               activebackground='#D9D9D9')
