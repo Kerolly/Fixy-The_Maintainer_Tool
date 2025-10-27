@@ -7,9 +7,10 @@ from ui.left_side import build_left_side
 from ui.right_side import build_right_side
 from ui.footer import build_footer
 from utils.logging_config import app_logger
+from ui.tray_icon import setup_tray, hide_to_tray
 
 
-def create_main_window():
+def create_main_window(start_hidden=False):
     try:
         # initiate the window
         window = Tk()
@@ -33,6 +34,13 @@ def create_main_window():
 
         #footer builder
         build_footer(window)
+
+        #generate systray
+        setup_tray(window, get_base_path("assets/icons/fixy.ico"))
+
+        #open directly in tray if is hidden argv
+        if start_hidden:
+            hide_to_tray()
 
         # -------------------------------------------
         window.mainloop()

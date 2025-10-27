@@ -34,7 +34,14 @@ def main():
         print(f"PID is {process.pid}")
 
         print("[DEBUG] Window is opennn!")
-        create_main_window()
+
+        is_hidden = False
+        if "--hidden" in sys.argv:
+            is_hidden = True
+            print("[DEBUG] Start in hidden mode!")
+            app_logger.info("Start in hidden mode!")
+
+        create_main_window(start_hidden=is_hidden)
         # Do not put code below
 
 
