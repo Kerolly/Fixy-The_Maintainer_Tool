@@ -4,13 +4,22 @@
 
 To make **Fixy The Maintainer Tool** start automatically each time you log into Windows:
 
-1. Run the script **`setup_fixy_task_scheduler.ps1`** manually  
-   (right‑click → 💻 **Run with PowerShell**)
+1. Run the script **`FixyTaskSchedulerManager.bat`** from **`tools`** folder, manually  
+   (double‑click → 💻 **Will run the script**)
 
-2. The script will create a scheduled task named:  
+
+2. Choose the action **`1`**:
+- **`1` → Enable Auto‑Start** – creates or updates the task **“Fixy Auto Launch”**
+- **`2` → Disable Auto‑Start** – removes the Fixy task from Task Scheduler
+- **`0` → Exit** – closes the menu
+
+---
+
+3. The script will create a scheduled task named:  
    👉 **Fixy Auto Launch**
 
-3. On your next Windows log‑in, **Fixy** will launch automatically.  
+
+4. At your next Windows log‑in, **Fixy** will launch automatically.  
    🔹 The main window will not show immediately – it will go straight to the **system tray**.  
    🔹 A small CMD window might flash briefly at startup – ✅ that’s normal! It’s only checking for updates.
 
@@ -20,21 +29,28 @@ To make **Fixy The Maintainer Tool** start automatically each time you log
 
 If you want to disable automatic startup:
 
-1. Run the script **`delete_fixy_task_scheduler.ps1`**  
-   (right‑click → 💻 **Run with PowerShell**)
+1.  Run the script **`FixyTaskSchedulerManager.bat`** from **`tools`** folder, manually 
+   (double‑click → 💻 **Will run the script**)
 
-2. The scheduled task **Fixy Auto Launch** will be removed from Task Scheduler.
+
+2. Choose the action **`2`**:
+- **`1` → Enable Auto‑Start** – creates or updates the task **“Fixy Auto Launch”**
+- **`2` → Disable Auto‑Start** – removes the Fixy task from Task Scheduler
+- **`0` → Exit** – closes the menu
+
+
+3. The scheduled task **Fixy Auto Launch** will be removed from Task Scheduler.
 
 ---
 
-## 🧩 Quick Summary
 
-| Action | Script to run |
-|---------|----------------|
-| 🔄 Enable auto‑start | `setup_fixy_task_scheduler.ps1` |
-| ❌ Disable auto‑start | `delete_fixy_task_scheduler.ps1` |
-| ▶️ How to run | right‑click → **Run with PowerShell** |
+## 🧩 Quick commands (for power users)
 
+| Action | Description | Script used |
+|---------|--------------|-------------|
+| 🔄 Enable Auto‑Start | Creates or updates Fixy Auto Launch task | `setup_fixy_task_scheduler.ps1` |
+| ❌ Disable Auto‑Start | Deletes the Fixy Auto Launch task | `delete_fixy_task_scheduler.ps1` |
+| 🧰 Interactive Menu | Lets you choose 1, 2 or 0 from CMD | `FixyTaskSchedulerManager.bat` |
 ---
 
 ✨ After activation, Fixy will:
