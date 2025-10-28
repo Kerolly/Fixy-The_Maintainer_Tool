@@ -11,7 +11,7 @@ $IsAdmin = ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIde
 if (-not $IsAdmin) {
     Write-Host "Not running as Administrator. Requesting elevation..."
 
-    # Relansează scriptul cu drepturi de admin
+    #  Relaunch script with admin
     Start-Process -FilePath "powershell.exe" `
                   -ArgumentList "-ExecutionPolicy Bypass -File `"$PSCommandPath`"" `
                   -Verb RunAs
@@ -41,7 +41,6 @@ Write-Host ""
 # Check if the exe exist
 if (-not (Test-Path $FixyExe)) {
     Write-Host "File not found: $FixyExe"
-    Read-Host -Prompt "Press Enter to exit"
     exit 1
 }
 
@@ -49,7 +48,6 @@ if (-not (Test-Path $FixyExe)) {
 $existingTask = Get-ScheduledTask -TaskName $TaskName -ErrorAction SilentlyContinue
 if ($existingTask) {
     Write-Host "Existing task found. Removing it..."
-    Read-Host -Prompt "Press Enter to continue"
     Unregister-ScheduledTask -TaskName $TaskName -Confirm:$false
 }
 
@@ -73,4 +71,3 @@ Register-ScheduledTask -TaskName $TaskName -InputObject $task -Force
 Write-Host ""
 Write-Host "Scheduled task '$TaskName' created successfully!"
 Write-Host "Fixy will start automatically after log-in with admin rights."
-Read-Host -Prompt "Press Enter to exit"

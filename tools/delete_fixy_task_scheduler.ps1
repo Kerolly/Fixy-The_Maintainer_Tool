@@ -11,7 +11,7 @@ $IsAdmin = ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIde
 if (-not $IsAdmin) {
     Write-Host "Not running as Administrator. Requesting elevation..."
 
-    # Relansează scriptul cu drepturi de admin
+    # Relaunch script with admin
     Start-Process -FilePath "powershell.exe" `
                   -ArgumentList "-ExecutionPolicy Bypass -File `"$PSCommandPath`"" `
                   -Verb RunAs
@@ -24,4 +24,3 @@ Write-Host "Running with Administrator privileges!"
 $TaskName = "Fixy Auto Launch"
 Unregister-ScheduledTask -TaskName $TaskName -Confirm:$false
 Write-Host "Task '$TaskName' removed."
-Read-Host -Prompt "Press Enter to exit"

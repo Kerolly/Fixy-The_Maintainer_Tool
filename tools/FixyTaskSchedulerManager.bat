@@ -27,6 +27,7 @@ goto MENU
 echo.
 echo   Creating or updating Fixy Auto-Start task...
 powershell -ExecutionPolicy Bypass -File "%~dp0setup_fixy_task_scheduler.ps1"
+echo Created successfully
 echo.
 pause
 goto MENU
@@ -35,6 +36,7 @@ goto MENU
 echo.
 echo   Removing Fixy Auto-Start task...
 powershell -ExecutionPolicy Bypass -File "%~dp0delete_fixy_task_scheduler.ps1"
+echo Removed successfully
 echo.
 pause
 goto MENU
