@@ -24,9 +24,12 @@ Write-Host "Running with Administrator privileges!"
 # Name of task from Task Scheduler
 $TaskName = "Fixy Auto Launch"
 
-# Get auto path, this script should be in the same folder as the exe
+# Get the folder where this script is located
 $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Definition
-$FixyExe = Join-Path $ScriptDir "Fixy.exe"
+
+# Fixy.exe is one folder up (parent folder)
+$ParentDir = Split-Path $ScriptDir -Parent
+$FixyExe = Join-Path $ParentDir "Fixy.exe"
 
 # Arguments to open hidden
 $Arguments = "--hidden"
